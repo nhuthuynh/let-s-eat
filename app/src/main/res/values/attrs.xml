@@ -1,0 +1,5 @@
+<resources>
+    <attr name="reviewItemImage">100dp</attr>
+    <attr name="reviewItemRestaurantName">16dp</attr>
+    <attr name="reviewMinHeight">160dp</attr>
+</resources>

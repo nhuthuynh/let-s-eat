@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="reviewMinHeight">160dp</dimen>
+    <dimen name="reviewImageWidth">150dp</dimen>
+    <dimen name="reviewImageHeight">100dp</dimen>
+    <dimen name="padding">10dp</dimen>
+    <dimen name="profileImageHeight">150dp</dimen>
+    <dimen name="profileImageWidth">150dp</dimen>
+    <dimen name="profileChangeButtonWith">25dp</dimen>
+    <dimen name="profileChangeButtonHeight">25dp</dimen>
+    <dimen name="reviewWidth">150dp</dimen>
+    <dimen name="reviewHeight">150dp</dimen>
+</resources>

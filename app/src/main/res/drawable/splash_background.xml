@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/backgroundColorPrimary" />
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/letseat_icon_medium" />
+    </item>
+</layer-list>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowBackground">@color/backgroundColorPrimary</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionModeBackground">@color/backgroundColorPrimary</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:actionModeBackground">@color/backgroundColorPrimary</item>
+    </style>
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/textErrorColor</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="AppTheme.ActionButton" parent="Widget.AppCompat.ActionButton">
+    </style>
+    <style name="AppTheme.TitleScreen">
+        <item name="android:elevation">4dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/title_screen_border_bottom</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:colorBackground">@color/backgroundColorPrimary</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.TitleScreenNoToolbar">
+        <item name="android:elevation">4dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/title_screen_border_bottom</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:colorBackground">@color/backgroundColorPrimary</item>
+        <item name="android:padding">15dp</item>
+    </style>
+    <style name="AppTheme.ButtonPrimary">
+        <item name="android:background">@color/colorSecondaryDark</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+    <style name="AppTheme.TextInputLayout">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/colorSecondaryLight</item>
+        <item name="android:colorControlNormal">@color/colorSecondaryLight</item>
+        <item name="android:colorControlActivated">@color/colorSecondaryDark</item>
+        <item name="android:colorControlHighlight">@color/colorSecondaryDark</item>
+    </style>
+    <style name="AppTheme.EditText">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="colorControlNormal">@color/textColorPrimary</item>
+        <item name="android:colorControlNormal">@color/colorSecondaryLight</item>
+        <item name="android:colorControlActivated">@color/colorSecondaryDark</item>
+        <item name="android:colorControlHighlight">@color/colorSecondaryDark</item>
+    </style>
+    <style name="AppTheme.ButtonLink">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/colorSecondaryDark</item>
+        <item name="android:padding">0dp</item>
+    </style>
+</resources>
