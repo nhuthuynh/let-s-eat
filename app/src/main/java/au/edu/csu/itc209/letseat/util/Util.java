@@ -1,6 +1,10 @@
 package au.edu.csu.itc209.letseat.util;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
 import android.support.design.widget.TextInputLayout;
 import android.util.Patterns;
 import android.widget.EditText;
@@ -12,10 +16,8 @@ import java.util.Date;
 
 import au.edu.csu.itc209.letseat.R;
 import au.edu.csu.itc209.letseat.constant.Constants;
-
-/**
- * Created by NhutHuynh on 10/3/17.
- */
+import au.edu.csu.itc209.letseat.database.LocationDatabaseHelper;
+import au.edu.csu.itc209.letseat.database.LocationDatabaseMetadata;
 
 public final class Util {
 
@@ -93,5 +95,35 @@ public final class Util {
                     .content(R.string.please_wait)
                     .progress(true, 0);
         }
+    }
+
+    public static int saveLocation(Context ctx, Location location) {
+        if(location == null) { return -1; }
+        SQLiteDatabase db = (new LocationDatabaseHelper(ctx)).getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(LocationDatabaseMetadata.COLUMN_NAME_LATITUDE, location.getLatitude());
+        values.put(LocationDatabaseMetadata.COLUMN_NAME_LONGITUDE, location.getLongitude());
+
+        return (int) db.insert(LocationDatabaseMetadata.TABLE_NAME, null, values);
+    }
+
+    public static Location getLocation(Context ctx) {
+        SQLiteDatabase db = (new LocationDatabaseHelper(ctx)).getWritableDatabase();
+
+        String [] fields = {LocationDatabaseMetadata.COLUMN_NAME_LATITUDE, LocationDatabaseMetadata.COLUMN_NAME_LONGITUDE};
+
+        Cursor cursor = db.query(LocationDatabaseMetadata.TABLE_NAME, fields, null, null, null, null, null);
+
+        Location location = new Location("");
+        location.setLatitude(0.0);
+        location.setLongitude(0.0);
+
+        while (cursor.moveToNext()) {
+            location.setLatitude(cursor.getDouble(cursor.getColumnIndexOrThrow(LocationDatabaseMetadata.COLUMN_NAME_LATITUDE)));
+            location.setLongitude(cursor.getDouble(cursor.getColumnIndexOrThrow(LocationDatabaseMetadata.COLUMN_NAME_LONGITUDE)));
+        }
+
+        return location;
     }
 }

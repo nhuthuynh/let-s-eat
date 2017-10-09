@@ -243,7 +243,7 @@ public class Profile_Fragment extends Fragment {
         startActivityForResult(chooserIntent, Constants.REQUEST_PICK_IMAGE);
     }
 
-    public void startTakPictureIntent() {
+    public void startTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // ensure that there's a camera activity to handle the intent
         if(takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
@@ -295,7 +295,7 @@ public class Profile_Fragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Log.d(TAG, "onClick take picture");
-                    startTakPictureIntent();
+                    startTakePictureIntent();
                 }
             });
         } else {

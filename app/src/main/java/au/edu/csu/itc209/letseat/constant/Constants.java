@@ -4,6 +4,7 @@ public class Constants {
     public static final String TITLE_KEY = "title";
     public static final String IS_HIDE_BACK_ARROW_KEY = "hideBackArrow";
     public static final int RC_SIGN_IN = 9001;
+    public static final int REQUEST_LOCATION = 999;
     public static final String FIREBASE_APP_DATABASE_URL = "https://letseat-497e2.firebaseio.com/";
     public static final String FIREBASE_APP_STORAGE_URL = "gs://letseat-497e2.appspot.com";
     public static final String FIREBASE_STORAGE_FOLDER_NODE = "letseat";

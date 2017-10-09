@@ -7,10 +7,6 @@ import android.util.Log;
 
 import java.lang.reflect.Field;
 
-/**
- * Created by NhutHuynh on 9/20/17.
- */
-
 public class BottomNavigationViewHelper {
     public static void removeShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);

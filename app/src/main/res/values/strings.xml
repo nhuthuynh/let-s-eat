@@ -14,7 +14,12 @@
     <string name="place_name">Place name</string>
     <string name="place_desc">Place description</string>
     <string name="add_address_btn">Add address</string>
-    <string name="reset">reset</string>
+    <string name="add_review_btn">Add review</string>
+    <string name="phone">Phone number</string>
+    <string name="reset">Reset</string>
+    <string name="add">Add</string>
+    <string name="dialog_add_address_map_title">Add address</string>
+    <string name="your_here">You are here</string>
     <string name="btnViewAll">View all</string>
     <string name="btnLoginWithGoogle">Log In With Google</string>
     <string name="btnLoginAnonymous">Log In Anonymous</string>

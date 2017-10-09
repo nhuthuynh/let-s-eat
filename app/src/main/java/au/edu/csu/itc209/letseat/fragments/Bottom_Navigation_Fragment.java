@@ -32,9 +32,8 @@ public class Bottom_Navigation_Fragment extends Fragment {
     }
 
     public interface OnBottomNavigationSelectedListener {
-        public void onNavigationItemSelected(MenuItem menuItem);
+        void onNavigationItemSelected(MenuItem menuItem);
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -11,7 +11,7 @@
         android:padding="@dimen/padding">
         <android.support.design.widget.TextInputLayout
             android:id="@+id/edtNameWrapper"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.TextInputLayout"
             >
@@ -41,6 +41,8 @@
                 android:maxLines="3"
                 android:inputType="text"
                 android:minLines="3"
+                android:singleLine="false"
+                android:gravity="top"
                 android:theme="@style/AppTheme.EditText"
                 android:textColorHint="@color/textColorPrimary"
                 android:textColor="@color/textColorPrimary"
@@ -58,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:hint="@string/phone"
                 android:theme="@style/AppTheme.EditText"
                 android:textColorHint="@color/textColorPrimary"
                 android:textColor="@color/textColorPrimary"
@@ -66,7 +69,7 @@
         </android.support.design.widget.TextInputLayout>
         <Button
             android:id="@+id/btnOpenPopupMap"
-            android:layout_below="@+id/edtDescWrapper"
+            android:layout_below="@+id/edtPhoneWrapper"
             android:background="@null"
             android:text="@string/add_address_btn"
             android:layout_width="wrap_content"
@@ -85,7 +88,8 @@
                 android:layout_height="wrap_content"
                 android:theme="@style/AppTheme.EditText"
                 android:textColor="@color/textColorPrimary"
-                android:text="@string/workingHourFrom"/>
+                android:text="@string/workingHourFrom"
+                android:layout_marginRight="5dp"/>
             <Spinner
                 android:id="@+id/ddlTimeOpen"
                 android:layout_width="wrap_content"
@@ -97,7 +101,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/textColorPrimary"
                 android:theme="@style/AppTheme.EditText"
-                android:text="@string/workingHourTo"/>
+                android:text="@string/workingHourTo"
+                android:layout_marginRight="5dp"/>
             <Spinner
                 android:id="@+id/ddlTimeClose"
                 android:layout_width="wrap_content"
@@ -116,7 +121,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textColorPrimary"
-                android:text="@string/priceFrom"/>
+                android:text="@string/priceFrom"
+                android:layout_marginRight="5dp"/>
             <Spinner
                 android:id="@+id/ddlPriceFrom"
                 android:layout_width="wrap_content"
@@ -127,7 +133,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textColorPrimary"
-                android:text="@string/priceTo"/>
+                android:text="@string/priceTo"
+                android:layout_marginRight="5dp"/>
             <Spinner
                 android:id="@+id/ddlPriceTo"
                 android:layout_width="wrap_content"
@@ -135,5 +142,22 @@
                 android:theme="@style/AppTheme.EditText"
                 />
         </LinearLayout>
+        <Button android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            android:layout_below="@+id/priceWrapper"
+            android:layout_alignRight="@+id/btnReviewAdd"
+            android:background="@color/colorSecondaryDark"
+            android:textColor="@color/textColorSecondary"
+            android:layout_marginRight="5dp"></Button>
+        <Button android:id="@+id/btnReviewAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_review_btn"
+            android:layout_below="@+id/priceWrapper"
+            android:background="@color/colorSecondaryDark"
+            android:textColor="@color/textColorSecondary"
+            android:layout_alignParentRight="true"></Button>
     </RelativeLayout>
 </FrameLayout>

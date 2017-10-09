@@ -1,11 +1,14 @@
 package au.edu.csu.itc209.letseat.activities;
 
+import android.Manifest;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -14,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 
 import java.io.IOException;
 
@@ -36,7 +41,7 @@ public class MainActivity extends BaseActivity
         Profile_Fragment.OnFragmentInteractionListener,
         Bottom_Navigation_Fragment.OnFragmentInteractionListener,
         Bottom_Navigation_Fragment.OnBottomNavigationSelectedListener,
-        Status_Bar_Fragment.OnFragmentInteractionListener {
+        Status_Bar_Fragment.OnFragmentInteractionListener, Review_Add_Fragment.OnDialogMapListener {
 
     private final String TAG = "MainActivity";
     @BindView(R.id.progressBarWrapper) RelativeLayout progressBarWrapper;
@@ -139,4 +144,14 @@ public class MainActivity extends BaseActivity
         }
     }
 
+    @Override
+    public void onOpenMap() {
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{ android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    Constants.REQUEST_LOCATION);
+        }
+
+    }
 }

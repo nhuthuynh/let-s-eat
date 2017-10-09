@@ -117,7 +117,7 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Log.d(TAG, "signInAnonymously:success");
-                    goToOtherScreen(LoginActivity.class, true);
+                    goToOtherScreen(MainActivity.class, true);
                 } else {
                     Log.w(TAG, "signInAnonymously:failure", task.getException());
                     Toast.makeText(LoginActivity.this, "Authentication failed.",
@@ -133,18 +133,19 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
         final String password = edtPass.getText().toString().trim();
 
         if(!Util.isValidEmail(edtEmail, edtEmailWrapper) || !isValidPassword(password)) return;
-
+        Util.showLoading(LoginActivity.this);
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
-                            //saveUser();
+                            Util.hideLoading(LoginActivity.this);
                             Toast.makeText(LoginActivity.this, "Log in successful!", Toast.LENGTH_SHORT).show();
                             goToOtherScreen(MainActivity.class, true);
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Util.hideLoading(LoginActivity.this);
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }

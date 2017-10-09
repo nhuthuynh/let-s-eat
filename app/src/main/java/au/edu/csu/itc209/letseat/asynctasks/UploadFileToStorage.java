@@ -16,9 +16,6 @@ import java.io.ByteArrayOutputStream;
 import au.edu.csu.itc209.letseat.constant.Constants;
 import au.edu.csu.itc209.letseat.util.Util;
 
-/**
- * Created by NhutHuynh on 10/6/17.
- */
 
 public class UploadFileToStorage extends AsyncTask<Bitmap, Integer, UploadTask> {
     private StorageReference storageRef;

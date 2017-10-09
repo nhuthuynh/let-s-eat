@@ -1,10 +1,13 @@
 package au.edu.csu.itc209.letseat.fragments;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +18,23 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import au.edu.csu.itc209.letseat.Manifest;
 import au.edu.csu.itc209.letseat.R;
 import au.edu.csu.itc209.letseat.constant.Constants;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 
@@ -38,9 +54,20 @@ public class Review_Add_Fragment extends Fragment {
     private String [] hours;
     final String TAG = "Review Add";
 
+    private MaterialDialog.Builder dialogBuilder;
+    private MaterialDialog dialog;
+
+    private OnDialogMapListener openMapCallback;
+    private FusedLocationProviderClient mFusedLocationClient;
+
     public Review_Add_Fragment() {
 
     }
+
+    public interface OnDialogMapListener {
+        void onOpenMap();
+    }
+
     public static Review_Add_Fragment newInstance(String param1, String param2) {
         Review_Add_Fragment fragment = new Review_Add_Fragment();
         Bundle args = new Bundle();
@@ -52,6 +79,46 @@ public class Review_Add_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
+    }
+
+    private void initBuilder() {
+        if(dialogBuilder==null){
+            dialogBuilder = new MaterialDialog.Builder(getContext())
+                    .title(R.string.dialog_add_address_map_title)
+                    .customView(R.layout.dialog_map, false)
+                    .positiveText(R.string.add);
+        }
+    }
+
+    private void initDialog(){
+        initBuilder();
+        if(dialog==null) {
+            dialog = dialogBuilder.build();
+        }
+
+        View v = dialog.getCustomView();
+    }
+
+    @OnClick(R.id.btnOpenPopupMap)
+    public void openDialogMap() {
+        openMapCallback.onOpenMap();
+        dialog.show();
+
+        GoogleMap googleMap;
+
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
+        MapsInitializer.initialize(getActivity());
+        MapView mMapView = getActivity().findViewById(R.id.mapView);
+        mMapView.onCreate(new Bundle());
+        mMapView.onResume();// needed to get the map to display immediately
+        mMapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                if(mFusedLocationClient != null){
+
+                }
+            }
+        });
     }
 
     @Override
@@ -69,6 +136,7 @@ public class Review_Add_Fragment extends Fragment {
         adapterTime.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         ddlTimeOpen.setAdapter(adapterTime);
         ddlTimeClose.setAdapter(adapterTime);
+        initDialog();
 
         return v;
     }
@@ -127,9 +195,17 @@ public class Review_Add_Fragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
-        } else {
+        }
+        else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
+        }
+
+        if (context instanceof OnDialogMapListener) {
+            openMapCallback = (OnDialogMapListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnBottomNavigationSelectedListener");
         }
     }
 
